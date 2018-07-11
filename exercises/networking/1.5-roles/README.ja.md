@@ -84,6 +84,7 @@ $ cp ~/networking-workshop/router_configs.yml ~/test
 deploy_network.yml を新規に作成します。
 
 ```bash
+$ cd ~/test
 $ vim deploy_network.yml
 ```
 
@@ -121,7 +122,7 @@ ansible_network_os: ios
 ansible_connection: local
 host1_private_ip: "172.18.2.125"
 control_private_ip: "172.17.1.157"
-ios_version: "16.06.01"
+ios_version: "16.08.01a"
 ```  
 host1_private_ip と control_private_ip を lab_inventory から転記します
 
@@ -154,17 +155,17 @@ For `roles/interface/tasks/main.yml`:
 
 ```yml
 - block:
-  - name: enable GigabitEthernet2 interface if compliant on r2
+  - name: enable GigabitEthernet1 interface if compliant on r2
     net_interface:
-      name: GigabitEthernet2
+      name: GigabitEthernet1
       description: interface to host1
       state: present
 
-  - name: dhcp configuration for GigabitEthernet2
+  - name: dhcp configuration for GigabitEthernet1
     ios_config:
       lines:
         - ip address dhcp
-      parents: interface GigabitEthernet2
+      parents: interface GigabitEthernet1
   when:
     - ansible_net_version == ios_version
     - '"rtr2" in inventory_hostname'
@@ -220,7 +221,7 @@ $ ansible-playbook deploy_network.yml
 3つのロール、すなわち system、interface、static_route からなる deploy_network.yml ができました。Playbookをロールに構造化することの強みは、Ansible Galaxyを使ってPlaybookに新しいロールを追加できることです。もちろん自分自身でロールを作ることもできます。更に、ロールは変数、タスク、テンプレート等の変更をシンプルにします。
 
 ## Answer Key
-ファイルが複数あるので [このGitHubを参照する](https://github.com/network-automation/linklight/tree/master/exercises/networking/1.6-roles) のがベストです。
+ファイルが複数あるので [このGitHubを参照する](https://github.com/network-automation/linklight/tree/master/exercises/networking/1.5-roles) のがベストです。
 
  ---
 [Ansible Linklight - ネット-ワークワークショップ に戻る](../README.ja.md)
