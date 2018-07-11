@@ -157,6 +157,7 @@ playの定義から始め、各行が何をしているのかを理解しまし�
 playbookを書き終えたら、保存しましょう。`vi` または `vim`にて、`write/quit` を使用(例: Escキー押下後、wq!実行)し、playbookを保存します。
 
 [Yaml](http://yaml.org/) はインデントやスペースの形式が少し特殊かもしれません。スペースやアラインメントをご確認いただくことをお勧めいたします:
+
 {% raw %}
 ```
 ---
@@ -215,4 +216,4 @@ less backup/rtr2*
 ```
 
  ---
-[Click Here to return to the Ansible Linklight - Networking Workshop](../README.md)
+[Click Here to return to the Ansible Linklight - Networking Workshop](../README.ja.md)

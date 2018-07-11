@@ -118,4 +118,4 @@ conditionals を使用したplaybookは完成です。このモジュールで�
 [こちらをclick](https://github.com/network-automation/linklight/blob/master/exercises/networking/1.3-gre/gre.yml).
 
  ---
-[Click Here to return to the Ansible Linklight - Networking Workshop](../README.md)
+[Click Here to return to the Ansible Linklight - Networking Workshop](../README.ja.md)

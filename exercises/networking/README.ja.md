@@ -18,7 +18,7 @@
  - [Exercise 1.2 - コンフィグのバックアップ](1.2-backup/README.ja.md)
  - [Exercise 1.3 - GREトンネルの作成](1.3-gre/README.ja.md)
  - [Exercise 1.4 - ルータ設定の追加](1.4-router_configs/README.ja.md)
- - [Exercise 1.5 - Roles: 再利用を想定したPlaybook](1.6-roles/README.ja.md)
+ - [Exercise 1.5 - Roles: 再利用を想定したPlaybook](1.5-roles/README.ja.md)
 
 ## Ansible Tower Networking Exercises
 

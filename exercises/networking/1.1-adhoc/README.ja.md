@@ -89,4 +89,4 @@ ansible routers -m ios_banner -a 'banner=motd state=absent' -c network_cli
 演習 1.1 はこれで完了です。
 
  ---
-[Click Here to return to the Ansible Linklight - Networking Workshop](../README.md)
+[Click Here to return to the Ansible Linklight - Networking Workshop](../README.ja.md)

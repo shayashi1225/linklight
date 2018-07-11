@@ -157,6 +157,7 @@ The next three lines are calling the Ansible module ios_config and passing in th
 Now that you’ve completed writing your playbook, it would be a shame not to keep it.  Use the write/quit method in vim to save your playbook, i.e. hit Esc then `:wq!`
 
 [Yaml](http://yaml.org/) can be a bit particular about formatting especially around indentation/spacing.  Take note of the spacing and alignment:
+
 {% raw %}
 ```
 ---

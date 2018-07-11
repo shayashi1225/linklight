@@ -202,4 +202,4 @@ ansible-playbook host-routes.yml
 演習1.4が終了しました
 
  ---
-[Click Here to return to the Ansible Linklight - Networking Workshop](../README_ja.md)
+[Click Here to return to the Ansible Linklight - Networking Workshop](../README.ja.md)
