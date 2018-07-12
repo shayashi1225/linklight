@@ -7,7 +7,7 @@ playbookは1つまたは複数のplayに、1つまたは複数のタスクを持
 ## 目次
 - [環境の調査](#exploring-the-environment)
 - [Playbook 1 - backup.yml](#playbook-1---backupyml)
-- [Playbook 2 - host-routes.yml](#playbook-2---host-routesyml)
+- ~~[Playbook 2 - host-routes.yml](#playbook-2---host-routesyml)~~
 - [Answer Key](#answer-key)
 
 
