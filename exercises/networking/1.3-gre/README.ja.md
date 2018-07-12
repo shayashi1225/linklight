@@ -44,7 +44,7 @@ vim gre.yml
 - name: Configure GRE Tunnel between rtr1 and rtr2
   hosts: routers
   gather_facts: no
-  connection: local
+  connection: network_cli
 ```
 
 また **2つの変数** が必要です。rtr1 と rtr2 のパブリックIPが必要です。なお、これらのIPアドレスはワークショップ参加者それぞれで異なる状態である必要があります。 Ansibleノード上の `~/networking_workshop/lab_inventory/hosts` にパブリックIPアドレスを見つけることができます。ここではそれらをそれぞれ `rtr1_public_ip` と `rtr2_public_ip` と呼びます。一旦IPアドレスは 1.1.1.1 と 2.2.2.2 としていますが、これらを置き換えてください。または以下のように動的モードを使用してください:

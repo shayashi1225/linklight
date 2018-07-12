@@ -73,13 +73,7 @@ $ rm -rf roles/{system,interface,static_route}/{files,tests}
 
 このセクションでは `vars:` や `tasks:` といったPlaybookの主要部分を分離していきます。
 
-### ~~ステップ 1: router_configs.yml のバックアップコピーを作り、新しく deploy_network.yml を作ります。
-
-前の演習から router_configs をコピーします。~~
-
-```
-~~$ cp ~/networking-workshop/router_configs.yml ~/test~~
-```
+### deploy_network.yml を作ります。
 
 deploy_network.yml を新規に作成します。
 

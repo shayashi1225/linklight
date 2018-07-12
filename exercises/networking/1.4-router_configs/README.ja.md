@@ -192,7 +192,7 @@ PING 172.18.4.188 (172.18.4.188) 56(84) bytes of data.
 `host-routes.yml` playbook を実行してください。
 
 ```bash
-cd networking-workshop/1.4-router_configs
+cd ~/networking-workshop/1.4-router_configs
 ansible-playbook host-routes.yml
 ```
 
