@@ -54,7 +54,7 @@ vim router_configs.yml
 - name: Router Configurations
   hosts: routers
   gather_facts: no
-  connection: local
+  connection: network_cli
   vars:
     ansible_network_os: ios
     dns_servers:
@@ -74,12 +74,12 @@ vim router_configs.yml
     ##Configuration for R1
     - block:
       - name: Static route from R1 to R2
-        net_static_route:
+        ios_static_route:
           prefix: "{{host1_private_ip}}"
           mask: 255.255.255.255
           next_hop: 10.0.0.2
       - name: configure name servers
-        net_system:
+        ios_system:
           name_servers: "{{item}}"
         with_items: "{{dns_servers}}"
       when:
@@ -108,7 +108,7 @@ vim router_configs.yml
     ##Configuration for R2
     - block:
       - name: enable GigabitEthernet1 interface if compliant
-        net_interface:
+        ios_interface:
           name: GigabitEthernet1
           description: interface to host1
           state: present
@@ -118,12 +118,12 @@ vim router_configs.yml
             - ip address dhcp
           parents: interface GigabitEthernet1
       - name: Static route from R2 to R1
-        net_static_route:
+        ios_static_route:
           prefix: "{{control_private_ip}}"
           mask: 255.255.255.255
           next_hop: 10.0.0.1
       - name: configure name servers
-        net_system:
+        ios_system:
           name_servers: "{{item}}"
         with_items: "{{dns_servers}}"
       when:
@@ -132,10 +132,10 @@ vim router_configs.yml
 {% endraw %}
 
 **そして何が起こった?**
-  - [net_interface](http://docs.ansible.com/ansible/latest/net_interface_module.html): このモジュールはインターフェースの状態 (up, admin down, など) を定義することができます。このケースでは GigabitEthernet1 は起動しており、かつ正しい記述であることを確かめています。
+  - [ios_interface](https://docs.ansible.com/ansible/latest/modules/ios_interface_module.html): このモジュールはインターフェースの状態 (up, admin down, など) を定義することができます。このケースでは GigabitEthernet1 は起動しており、かつ正しい記述であることを確かめています。
   - [ios_config](http://docs.ansible.com/ansible/latest/ios_config_module.html): 前のplaybookでこのmoduleは使用していました。2つのtask(ip addr + static route)は結合できますが、特定の状態に至った場合ににtaskを分解するほうが好ましい場合もあります。  
-  - [net_system](https://docs.ansible.com/ansible/2.4/net_system_module.html): このモジュールは net_interface に似ており、ネットワーク装置のシステム属性を管理します。ルータに渡したい name_servers をフィードする際にこのモジュールをループと共に使用します。
-  - [net_static_route](https://docs.ansible.com/ansible/2.4/net_static_route_module.html): このモジュールはネットワーク装置のスタティックIPのルートを管理するために利用します。
+  - [ios_system](https://docs.ansible.com/ansible/latest/ios_system_module.html): このモジュールは net_interface に似ており、ネットワーク装置のシステム属性を管理します。ルータに渡したい name_servers をフィードする際にこのモジュールをループと共に使用します。
+  - [ios_static_route](https://docs.ansible.com/ansible/latest/ios_static_route_module.html): このモジュールはネットワーク装置のスタティックIPのルートを管理するために利用します。
 
 ## セクション 4 - routing_configs playbookの実行
 
@@ -175,7 +175,7 @@ ansible-playbook router_configs.yml
 ping <private IP of host node>
 ```
 
-ホストノードのIPアドレスは、インベントリーファイル ~/networking-workshop/lab_inventory/student(x).net-ws.hosts に private_ip=172.16.x.x として記載されています。
+ホストノードのIPアドレスは、インベントリーファイル `~/networking-workshop/lab_inventory/hosts` に private_ip=172.17.x.x として記載されています。
 
 例:
 ```bash
@@ -192,6 +192,7 @@ PING 172.18.4.188 (172.18.4.188) 56(84) bytes of data.
 `host-routes.yml` playbook を実行してください。
 
 ```bash
+cd networking-workshop/1.4-router_configs
 ansible-playbook host-routes.yml
 ```
 

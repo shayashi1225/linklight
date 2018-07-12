@@ -104,7 +104,7 @@ hostvars は、ホスト定義変数を意味します。`rtr1` と `rtr2` は�
 playbookを書き終えたら、保存しましょう。`vi` または `vim`にて、`write/quit` を使用(例: Escキー押下後、wq!実行)し、playbookを保存します。2つの playbookができました。では実行してみましょう。
 
 ## ステップ 6: playbook の実行
-linklight ディレクトリから gre.yml playbookを実行しましょう。
+gre.yml playbookを実行しましょう。
 ```bash
 ansible-playbook gre.yml
 ```

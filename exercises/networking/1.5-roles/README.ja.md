@@ -111,7 +111,7 @@ dns_servers:
 ### ステップ 4: `group_vars/all.yml` にグローバル変数を追加します
 
 ```bash
-$ ~/test
+$ cd ~/test
 $ mkdir group_vars
 $ vim group_vars/all.yml
 ```
@@ -144,7 +144,7 @@ host1_private_ip と control_private_ip を lab_inventory から転記します
   ios_facts:
 
 - name: configure name servers
-  net_system:
+  ios_system:
     name_servers: "{{item}}"
   with_items: "{{dns_servers}}"
 ```        
@@ -156,7 +156,7 @@ For `roles/interface/tasks/main.yml`:
 ```yml
 - block:
   - name: enable GigabitEthernet1 interface if compliant on r2
-    net_interface:
+    ios_interface:
       name: GigabitEthernet1
       description: interface to host1
       state: present
@@ -175,7 +175,7 @@ For `roles/static_route/tasks/main.yml`:
 ```yml
 ##Configuration for R1
 - name: Static route from R1 to R2
-  net_static_route:
+  ios_static_route:
     prefix: "{{host1_private_ip}}"
     mask: 255.255.255.255
     next_hop: 10.0.0.2
@@ -185,7 +185,7 @@ For `roles/static_route/tasks/main.yml`:
 
 ##Configuration for R2
 - name: Static route from R2 to R1
-  net_static_route:
+  ios_static_route:
     prefix: "{{control_private_ip}}"
     mask: 255.255.255.255
     next_hop: 10.0.0.1

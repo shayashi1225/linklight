@@ -18,7 +18,7 @@
 | **JOB TYPE**           | Run                                                                                      |
 | **INVENTORY**          | Ansible Workshop Inventory                                                               |
 | **PROJECT**            | Ansible Workshop Project                                                                 |
-| **PLAYBOOK**           | exercises/networking/1.5-roles/deploy_config.yml                                         |
+| **PLAYBOOK**           | exercises/networking/1.5-roles/deploy_network.yml                                         |
 | **MACHINE CREDENTIAL** | Demo Credential - This is required by default and can contain blank credentials.         |
 | **NETWORK CREDENTIAL** | Ansible Workshop Credential                                                              |
 
