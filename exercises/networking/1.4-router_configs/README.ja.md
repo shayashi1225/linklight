@@ -98,10 +98,10 @@ vim router_configs.yml
 ## セクション 3 - rtr2 の設定
 
 このブロック内に4つのtaskがあります
-- net_interface
+- ios_interface
 - ios_config
-- net_static_route
-- net_system
+- ios_static_route
+- ios_system
 
 {% raw %}
 ```yml

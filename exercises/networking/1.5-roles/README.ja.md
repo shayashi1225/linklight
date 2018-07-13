@@ -88,6 +88,7 @@ $ vim deploy_network.yml
 ---
 - name: Deploy the Router configurations
   hosts: routers
+  connection: network_cli
   gather_facts: no
   roles:
     - system
