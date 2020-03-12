@@ -85,6 +85,7 @@ Python で使われている [Jinja2](http://jinja.pocoo.org/docs/2.10/) は、�
 `vi` や `nano`、もしくはお好みのテキストエディターを使って `templates` の中にある `os_report.j2` を作成してください。ファイルの内容としては次のとおりです。
 
 ```shell
+[student1@ansible networking-workshop]$ mkdir templates
 [student1@ansible networking-workshop]$ vim templates/os_report.j2
 ```
 
@@ -106,7 +107,7 @@ Python で使われている [Jinja2](http://jinja.pocoo.org/docs/2.10/) は、�
 では、Playbook を実行してみましょう。
 
 ``` shell
-[student1@ansible networking-workshop]$ ansible-playbook -i lab_inventory/hosts router_report.yml
+[student1@ansible networking-workshop]$ ansible-playbook router_report.yml
 
 PLAY [GENERATE OS REPORT FROM ROUTERS] ******************************************************************************************************************************************************
 
@@ -277,4 +278,4 @@ RTR4
 ラボの Exercise 3.0 が完了しました。
 
 ---
-[Ansible Linklight - Networking Workshop に戻るにはクリックしてください](../../README.ja.md)
+[Ansible Linklight - Networking Workshop に戻るにはクリックしてください](../README.ja.md)

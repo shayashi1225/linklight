@@ -158,7 +158,7 @@ Playbook を次のように追記してください。
 
     - name: PARSE THE RAW OUTPUT
       command_parser:
-        file: "parsers/show_interfaces.yaml"
+        file: "supplemental/parsers/show_interfaces.yaml"
         content: "{{ output.stdout[0] }}"
 
 ```
@@ -209,7 +209,7 @@ Playbook を次のように追記してください。
 この Playbook を実行してください。今回の目的は、モジュールから返されたデータを見るだけなので、Playbook の実行対象を1台のルーターに制限します。
 
 ``` shell
-[student1@ansible networking-workshop]$ ansible-playbook -i lab_inventory/hosts interface_report.yml --limit rtr1
+[student1@ansible networking-workshop]$ ansible-playbook interface_report.yml --limit rtr1
 
 PLAY [GENERATE INTERFACE REPORT] ************************************************************************************************************************************************************
 
@@ -336,7 +336,7 @@ rtr1                       : ok=3    changed=0    unreachable=0    failed=0
 
     - name: GENERATE REPORT FRAGMENTS
       template:
-        src: interface_facts.j2
+        src: supplemental/templates/interface_facts.j2
         dest: intf_reports/{{inventory_hostname}}_intf_report.md
 
     - name: GENERATE A CONSOLIDATED REPORT
@@ -358,7 +358,7 @@ rtr1                       : ok=3    changed=0    unreachable=0    failed=0
 Playbook の実行結果は以下のとおりです。
 
 ``` shell
-[student1@ansible networking-workshop]$ ansible-playbook -i lab_inventory/hosts interface_report.yml
+[student1@ansible networking-workshop]$ ansible-playbook interface_report.yml
 
 PLAY [GENERATE INTERFACE REPORT] ************************************************************************************************************************************************************
 
@@ -461,4 +461,4 @@ Loopback1:
 ラボの Exercise 3.1 は、これで完了です。
 
 ---
-[Ansible Linklight - Networking Workshop に戻るにはクリックしてください](../../README.ja.md)
+[Ansible Linklight - Networking Workshop に戻るにはクリックしてください](../README.ja.md)

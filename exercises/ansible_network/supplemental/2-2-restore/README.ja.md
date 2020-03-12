@@ -5,16 +5,18 @@
 バックアップファイルは、Anisbleノードの`backup`ディレクトリへ格納されています。
 
 ```
-[student1@ansible networking-workshop]$ tree backup
-backup
-├── rtr1.config
-├── rtr1_config.2018-06-07@20:36:05
-├── rtr2.config
-├── rtr2_config.2018-06-07@20:36:07
-├── rtr3.config
-├── rtr3_config.2018-06-07@20:36:04
-├── rtr4.config
-└── rtr4_config.2018-06-07@20:36:06
+[student1@ansible networking-workshop]$ tree /backup
+/backup
+├── 2020-03-12-02-21
+│   ├── rtr1
+│   ├── rtr2
+│   ├── rtr3
+│   └── rtr4
+└── 2020-03-12-04-01
+    ├── rtr1
+    ├── rtr2
+    ├── rtr3
+    └── rtr4
 ```
 
 
@@ -84,7 +86,7 @@ Step 1では、マニュアルオペレーションによって想定外の変�
 
   tasks:
     - name: COPY RUNNING CONFIG TO ROUTER
-      command: scp ./backup/{{inventory_hostname}}.config  {{inventory_hostname}}:/{{inventory_hostname}}.config
+      command: scp /backup/2020-03-12-04-01/{{inventory_hostname}}  {{inventory_hostname}}:/{{inventory_hostname}}
 ```
 {%endraw%}
 
@@ -98,7 +100,7 @@ Step 1では、マニュアルオペレーションによって想定外の変�
 
 
 ```
-[student1@ansible networking-workshop]$ ansible-playbook -i lab_inventory/hosts restore_config.yml
+[student1@ansible networking-workshop]$ ansible-playbook restore_config.yml
 
 PLAY [RESTORE CONFIGURATION] *********************************************************
 
@@ -123,7 +125,7 @@ rtr4                       : ok=1    changed=1    unreachable=0    failed=0
 
 ルータへログインして、ファイルがコピーされたことを確認してみましょう。
 
-> Note bootflash:/ディレクトリの一番下に**rtr1.config**があるはずです。
+> Note bootflash:/ディレクトリの一番下に**rtr1**があるはずです。
 
 ```
 [student1@ansible networking-workshop]$ ssh rtr1
@@ -180,12 +182,12 @@ rtr1#
 
   tasks:
     - name: COPY RUNNING CONFIG TO ROUTER
-      command: scp ./backup/{{inventory_hostname}}.config {{inventory_hostname}}:/{{inventory_hostname}}.config
+      command: scp /backup/2020-03-12-04-01/{{inventory_hostname}}  {{inventory_hostname}}:/{{inventory_hostname}}
 
     - name: CONFIG REPLACE
       ios_command:
         commands:
-          - config replace flash:{{inventory_hostname}}.config force
+          - config replace flash:{{inventory_hostname}} force
 ```
 {%endraw%}
 
@@ -199,7 +201,7 @@ rtr1#
 
 ```
 
-[student1@ansible networking-workshop]$ ansible-playbook -i lab_inventory/hosts restore_config.yml
+[student1@ansible networking-workshop]$ ansible-playbook restore_config.yml
 
 PLAY [RESTORE CONFIGURATION] *********************************************************
 
@@ -261,4 +263,4 @@ rtr1#
 以上でlab exercise 2.2 は終了です。
 
 ---
-[ここをクリックすると Ansible Linklight - Networking Workshop へ戻ります](../../README.ja.md)
+[ここをクリックすると Ansible Linklight - Networking Workshop へ戻ります](../README.ja.md)

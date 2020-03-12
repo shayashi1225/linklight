@@ -147,4 +147,4 @@ rtr1 ansible_host=13.112.229.114 private_ip=172.16.135.74
 lab exercise 1.0 は以上です。
 
 ---
-[ここをクリックすると Ansible Linklight - Networking Workshop へ戻ります](../../README.ja.md)
+[ここをクリックすると Ansible Linklight - Networking Workshop へ戻ります](../README.ja.md)

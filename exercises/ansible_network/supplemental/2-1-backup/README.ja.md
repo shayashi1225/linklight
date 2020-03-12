@@ -333,4 +333,4 @@ no service nagle
 以上でlab exercise 2.1 は終了です。
 
 ---
-[ここをクリックすると Ansible Linklight - Networking Workshop へ戻ります](../../README.ja.md)
+[ここをクリックすると Ansible Linklight - Networking Workshop へ戻ります](../README.ja.md)

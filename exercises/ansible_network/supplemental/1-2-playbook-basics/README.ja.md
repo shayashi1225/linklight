@@ -399,4 +399,4 @@ rtr4                       : ok=3    changed=0    unreachable=0    failed=0
 以上でlab exercise 1.2 は終了です。
 
 ---
-[ここをクリックすると Ansible Linklight - Networking Workshop へ戻ります](../../README.ja.md)
+[ここをクリックすると Ansible Linklight - Networking Workshop へ戻ります](../README.ja.md)
